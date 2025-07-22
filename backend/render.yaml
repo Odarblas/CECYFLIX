@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: recomendaciones-backend
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.wsgi:application
+    rootDir: backend
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://cecyflix_user:iQj5ra9yYYqNOo7G@cineversecluster.k8fqdyd.mongodb.net/cecyflix?retryWrites=true&w=majority
+      - key: OPENROUTER_API_KEY
+        value: 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
+
+  - type: web
+    name: recomendaciones-frontend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: serve -s build
+    rootDir: frontend
