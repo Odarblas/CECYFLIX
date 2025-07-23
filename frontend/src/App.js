@@ -10,7 +10,7 @@ function App() {
     const fetchPeliculas = async () => {
       try {
         console.log('Iniciando fetch a /api/peliculas'); // Log 1
-        const response = await fetch('http://localhost:4000/api/peliculas');
+        const response = await fetch('https://recomendaciones-backend-jkjm.onrender.com');
         
         console.log('Respuesta recibida', response); // Log 2
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
